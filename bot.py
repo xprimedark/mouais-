@@ -11,6 +11,7 @@ load_dotenv()
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = int(os.getenv("DISCORD_CHANNEL_ID"))
+BOT_LOGS_ID = int(os.getenv("DISCORD_BOT_LOGS_ID"))
 SERVER_URL = "http://localhost:5000/log"
 START_TIME_FILE = "server/start_time.json"
 
@@ -40,7 +41,7 @@ async def on_ready():
 async def on_message(message):
     if message.channel.id != CHANNEL_ID:
         return
-    if not message.author.bot:
+    if message.author.id != BOT_LOGS_ID:
         return
 
     print(f"📩 Message reçu :\n{message.content}")
