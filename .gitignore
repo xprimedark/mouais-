@@ -1,1 +1,11 @@
-.env.local
+# Python
+__pycache__/
+*.pyc
+
+# Environnement local
+.env
+
+# IDE
+.vscode/
+.DS_Store
+*.log
