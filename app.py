@@ -26,10 +26,11 @@ def receive_log():
 def reset():
     key = request.form.get("key")
     if key != RESET_KEY:
-        return "Clé invalide", 403
+        return render_template("index.html", start_time=load_start_time().strftime("%d/%m/%Y à %H:%M"), message="❌ Clé invalide")
     reset_juice_column()
+    now = datetime.now()
     save_start_time(datetime.now())
-    return "Ventes réinitialisées avec succès !"
+    return render_template("index.html", start_time=now.strftime("%d/%m/%Y à %H:%M"), message="✅ Ventes réinitialisées avec succès !")
 
 def start_flask():
     app.run(host="0.0.0.0", port=5000)

@@ -5,6 +5,7 @@ import json
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
+import re
 
 load_dotenv()
 
@@ -59,11 +60,11 @@ async def on_message(message):
     quantity = 0
 
     for line in lines:
-        if "pour" in line and "par" in line:
+        match = re.search(r"(\d+)x\s+Jus.*?par\s+([^.]+)", line, re.IGNORECASE)
+        if match:
             try:
-                quantity_part = line.split("de")[1].split("pour")[0].strip()
-                quantity = int(quantity_part.split("x")[0].strip())
-                name = line.split("par")[1].strip().replace(".", "")
+                quantity = int(match.group(1))
+                name = match.group(2).strip()
             except Exception as e:
                 print(f"❌ Erreur de parsing : {e}")
                 return

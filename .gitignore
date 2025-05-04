@@ -9,3 +9,6 @@ __pycache__/
 .vscode/
 .DS_Store
 *.log
+
+# Projet
+credentials.json

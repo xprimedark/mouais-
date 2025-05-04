@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Statut du Jus</title>
+  <meta charset="UTF-8">
+  <title>🧃 Ferme Cayo Perico | Flashback FA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #444;
+    }
+    .info {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+    input[type="text"] {
+      padding: 0.5rem;
+      width: 100%;
+      margin: 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .message {
+      margin-top: 1rem;
+      color: green;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Ventes de jus depuis le {{ start_time }}</h1>
-    <form method="POST" action="/reset">
-        <input type="password" name="key" placeholder="Clé de reset">
-        <button type="submit">Réinitialiser</button>
-    </form>
+  <h1>🧃 Ferme Cayo Perico | Flashback FA</h1>
+
+  <div class="info">
+    <strong>Dernière réinitialisation :</strong> {{ start_time }}
+  </div>
+
+  <form action="/reset" method="POST">
+    <label for="key">Clé de réinitialisation :</label>
+    <input type="text" name="key" id="key" required placeholder="Entre ta clé ici">
+    <button type="submit">Réinitialiser les ventes</button>
+  </form>
+
+  {% if message %}
+    <div class="message">{{ message }}</div>
+  {% endif %}
 </body>
 </html>
