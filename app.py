@@ -31,5 +31,6 @@ def reset():
     save_start_time(datetime.now())
     return "Ventes réinitialisées avec succès !"
 
-if __name__ == "__main__":
-    app.run(debug=True)
+def start_flask():
+    app.run(host="0.0.0.0", port=5000)
+

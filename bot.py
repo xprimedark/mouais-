@@ -88,4 +88,5 @@ async def batch_sender():
                 print(f"❌ Erreur d'envoi au serveur: {e}")
         await asyncio.sleep(600)
 
-client.run(TOKEN)
+def start_bot():
+    client.run(TOKEN)
